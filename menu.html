@@ -1,16 +1,29 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>estacionamento</title>
-  </head>
-  <body class="bg-blue-100 flex items-center justify-center">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>estacionamento</title>
+</head>
+
+<body class="bg-blue-100 flex items-center justify-center">
+  <div class="max-w-4xl mx-auto">
     <header class="flex justify-between items-center mb-10 bg-blue-200 p-6 rounded-xl shadow-xl">
       <h1 class="text-2xl text-gray-800">🚗Sistema de Estacionamento</h1>
       <button id="btn-logout" class="bg-red-500 text-white px-4 py-2 rounded">Sair</button>
     </header>
-    <script type="module" src="/src/menu.js"></script>
-  </body>
+    <div class="grid grid-cols-2 gap-2">
+      <a href="veiculos.html" class="block p-10 bg-orange-400 text-white rounded-lg shadow-lg text-center hover:bg-orange-900">
+        🚗 Veículos
+      </a>
+       <a href="modelos.html" class="block p-10 bg-purple-400 text-white rounded-lg shadow-lg text-center hover:bg-purple-900">
+        🚙 Modelos
+      </a>
+   </div>
+ </div>
+   <script type="module" src="/src/menu.js"></script>
+</body>
+
 </html>

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modelos | Estacionamento</title>
+</head>
+
+<body class="min-h-screen bg-slate-100 text-slate-900">
+  <div class="mx-auto flex min-h-screen w-full max-w-6xl flex-col px-4 py-6 sm:px-6 lg:px-8">
+    <header class="mb-8 flex flex-col gap-4 rounded-lg border border-white/70 bg-white/90 p-5 shadow-sm sm:flex-row sm:items-center sm:justify-between">
+      <div>
+        <p class="text-sm font-medium uppercase tracking-wide text-blue-600">Sistema de Estacionamento</p>
+        <h1 class="mt-1 text-2xl font-bold text-slate-950">Marcas e modelos</h1>
+      </div>
+
+      <div class="flex flex-wrap gap-2">
+        <a href="menu.html" class="inline-flex items-center gap-2 rounded-md border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-blue-200 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="m12 19-7-7 7-7" />
+            <path d="M19 12H5" />
+          </svg>
+          Menu
+        </a>
+        <button id="btn-logout" class="inline-flex items-center gap-2 rounded-md bg-red-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+            <path d="m16 17 5-5-5-5" />
+            <path d="M21 12H9" />
+          </svg>
+          Sair
+        </button>
+      </div>
+    </header>
+
+    <main class="grid gap-6 lg:grid-cols-[360px_1fr]">
+      <section class="rounded-lg border border-white/70 bg-white p-5 shadow-sm">
+        <div class="mb-5">
+          <h2 id="titulo-formulario" class="text-lg font-bold text-slate-950">Novo modelo</h2>
+          <p class="mt-1 text-sm text-slate-500">Cadastre a marca e a descricao do veiculo.</p>
+        </div>
+
+        <form id="form-modelo" class="space-y-4">
+          <input type="hidden" id="modelo-id" />
+
+          <label class="block">
+            <span class="text-sm font-semibold text-slate-700">Marca</span>
+            <input id="marca" name="marca" type="text" required maxlength="100" placeholder="Ex: Toyota"
+              class="mt-2 w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-100" />
+          </label>
+
+          <label class="block">
+            <span class="text-sm font-semibold text-slate-700">Modelo</span>
+            <input id="descricao" name="descricao" type="text" required maxlength="100" placeholder="Ex: Corolla"
+              class="mt-2 w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-100" />
+          </label>
+
+          <div id="mensagem-formulario" class="hidden rounded-md px-3 py-2 text-sm"></div>
+
+          <div class="flex flex-col gap-2 sm:flex-row">
+            <button id="btn-salvar" type="submit" class="inline-flex flex-1 items-center justify-center gap-2 rounded-md bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2Z" />
+                <path d="M17 21v-8H7v8" />
+                <path d="M7 3v5h8" />
+              </svg>
+              Salvar
+            </button>
+            <button id="btn-cancelar" type="button" class="hidden inline-flex items-center justify-center gap-2 rounded-md border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M18 6 6 18" />
+                <path d="m6 6 12 12" />
+              </svg>
+              Cancelar
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <section class="overflow-hidden rounded-lg border border-white/70 bg-white shadow-sm">
+        <div class="flex flex-col gap-3 border-b border-slate-100 p-5 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <h2 class="text-lg font-bold text-slate-950">Modelos cadastrados</h2>
+            <p id="total-modelos" class="mt-1 text-sm text-slate-500">Carregando registros...</p>
+          </div>
+          <div class="relative">
+            <svg class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+            </svg>
+            <input id="busca-modelos" type="search" placeholder="Buscar..."
+              class="w-full rounded-md border border-slate-200 bg-white py-2 pl-9 pr-3 text-sm text-slate-900 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 sm:w-64" />
+          </div>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm">
+            <thead class="bg-slate-50 text-xs font-bold uppercase tracking-wide text-slate-500">
+              <tr>
+                <th class="px-5 py-3">Marca</th>
+                <th class="px-5 py-3">Modelo</th>
+                <th class="px-5 py-3 text-right">Acoes</th>
+              </tr>
+            </thead>
+            <tbody id="tabela-modelos" class="divide-y divide-slate-100"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="/src/modelos.js"></script>
+</body>
+
+</html>
